@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import logowritten from "../components/output_image.jpeg";
 export default function Navbar() {
   return (
     <div
@@ -14,7 +13,6 @@ export default function Navbar() {
             alt="Vector"
             className="w-16"
           />
-          <Image src={logowritten} alt="" className="h-16 w-80" />
         </div>
         <img
           src="https://file.rendit.io/n/9k7msNM2ENT1jEOy9aU9.png"
