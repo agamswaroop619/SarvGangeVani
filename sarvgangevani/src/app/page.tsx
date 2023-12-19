@@ -21,16 +21,13 @@ export default function Home() {
             <a href="/about" className="text-white text-lg">
               About Us
             </a>
-            <a href="/chat">
-            <button className="bg-white text-blue-700 px-4 py-2 rounded-full shadow-lg">
-              Chat Now
-            </button>
-            </a>
           </div>
           <div className="z-10 mt-12">
+            <a href="/chat">
             <button className="bg-white text-blue-700 px-6 py-3 rounded-full text-lg font-semibold shadow-lg">
               Click to start!
             </button>
+            </a>
           </div>
           <div className="absolute bottom-0 left-0 w-1/3">
             <Image
