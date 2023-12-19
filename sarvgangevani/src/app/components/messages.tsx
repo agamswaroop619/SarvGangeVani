@@ -5,6 +5,11 @@ interface MessagesProps {
 }
 
 const Messages: React.FC<MessagesProps> = ({ messages }) => {
+  const speak = (text: string) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(utterance);
+  };
+
   if (messages.length === 0) {
     return (
       <div className="absolute px-4 scroll-overflow inset-x-0 bottom-[10vh]">
@@ -44,6 +49,9 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
             </div>
             <div className="chat-footer">
               {message.fromUser ? "You" : "Chachaji"}
+              <button id="voice" onClick={() => speak(message.text)}>
+                speak
+              </button>
             </div>
             <div className="chat-bubble text-xl">{message.text}</div>
           </div>
