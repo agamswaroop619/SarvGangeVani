@@ -11,10 +11,10 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
         <h1 className="text-3xl">Frequently Asked Questions</h1>
         <div className="grid grid-cols-2 gap-2">
           <button className="border-double border-4 rounded-full border-white">
-            Sample Input 1
+            What is Namami Gange? How can we contribute to it?
           </button>
           <button className="border-double border-4 rounded-full border-white">
-            Sample Input 2
+            Chachaji gaana maa ki koi kahani sunaiye naa!
           </button>
         </div>
       </div>
