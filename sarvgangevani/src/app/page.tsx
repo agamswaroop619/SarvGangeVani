@@ -10,7 +10,7 @@ export default function Home() {
           color: "#0D1A5C",
           fontSize: 36,
           fontFamily: "monospace",
-          fontWeight: "400",
+          fontWeight: "700",
           wordWrap: "break-word",
         }}
         className="px-2"
