@@ -5,13 +5,18 @@ interface MessagesProps {
 }
 
 const Messages: React.FC<MessagesProps> = ({ messages }) => {
-  // Move the console.log outside the component if needed
-
   if (messages.length === 0) {
     return (
-      <div className="relative scroll-overflow top-[10vh] bottom-[10vh]">
-        <button>Sample Input 1</button>
-        <button>Sample Input 2</button>
+      <div className="absolute px-4 scroll-overflow inset-x-0 bottom-[10vh]">
+        <h1 className="text-3xl">Frequently Asked Questions</h1>
+        <div className="grid grid-cols-2 gap-2">
+          <button className="border-double border-4 rounded-full border-white">
+            Sample Input 1
+          </button>
+          <button className="border-double border-4 rounded-full border-white">
+            Sample Input 2
+          </button>
+        </div>
       </div>
     );
   } else {
