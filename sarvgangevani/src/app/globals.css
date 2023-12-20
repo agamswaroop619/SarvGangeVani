@@ -59,6 +59,15 @@ body {
   }
 }
 
+@keyframes rotateToAndFro {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
 .animate-fadeInScale {
   animation: fadeInScale 450ms ease-out;
 }
@@ -68,5 +77,9 @@ body {
 }
 .animate-moveLeftToRight {
   animation: moveLeftToRight 4000ms ease-in;
+  animation-iteration-count: infinite;
+}
+.animate-rotateToAndFro {
+  animation: rotateToAndFro 4500ms ease-in-out;
   animation-iteration-count: infinite;
 }

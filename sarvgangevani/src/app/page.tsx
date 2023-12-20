@@ -113,6 +113,7 @@ export default function Home() {
             alt="Illustration of children in a boat with balloons and a flag"
             width={800}
             height={800}
+            className="animate-rotateToAndFro"
           />
         </div>
       </div>
