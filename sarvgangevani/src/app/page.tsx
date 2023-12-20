@@ -29,12 +29,6 @@ export default function Home() {
             Quiz
           </a>
           <a
-            href="/news"
-            className="text-black text-lg relative underline-hover"
-          >
-            News
-          </a>
-          <a
             href="/about"
             className="text-black text-lg relative underline-hover"
           >
