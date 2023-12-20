@@ -27,10 +27,11 @@ export default function Home() {
             About Us
           </a>
         </div>
-        <div className="z-10 mt-12">
+        <div className="z-10 mt-12 flex flex-col justify-center items-center  ">
+          <p className="font-mono text-4xl py-6">Chachaji se Baatein kare!</p>
           <a href="/chat">
             <button className="bg-white text-blue-700 px-6 py-3 rounded-full text-lg font-semibold shadow-lg">
-              Chachaji se Baatien Kare!
+              Chat Now <span>→</span>
             </button>
           </a>
         </div>
