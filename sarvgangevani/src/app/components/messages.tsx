@@ -84,7 +84,9 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
                 🔊
               </button>
             </div>
-            <div className="chat-bubble text-xl">{message.text}</div>
+            <div className="chat-bubble text-xl bg-white text-black">
+              {message.text}
+            </div>
           </div>
         ))}
       </div>
