@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useReducer, useEffect } from "react";
 
 // Define the QuizData interface
@@ -11,7 +11,8 @@ interface QuizData {
 // Define the array of quiz data
 const quizData: QuizData[] = [
   {
-    question: "What is the primary river that the Namami Gange initiative aims to clean?",
+    question:
+      "What is the primary river that the Namami Gange initiative aims to clean?",
     options: ["Yamuna", "Ganges", "Brahmaputra", "Godavari"],
     answer: "Ganges",
   },
@@ -41,28 +42,41 @@ const quizData: QuizData[] = [
     answer: "Cleaning and conserving the Ganges River",
   },
   {
-    question: "Which Indian city is located on the banks of the Ganges and is considered one of the holiest cities in Hinduism?",
+    question:
+      "Which Indian city is located on the banks of the Ganges and is considered one of the holiest cities in Hinduism?",
     options: ["Jaipur", "Varanasi", "Mumbai", "Kolkata"],
     answer: "Varanasi",
   },
   {
     question: "What does 'Namami Gange' translate to in English?",
-    options: ["Clean Waters", "Ganges Blessings", "Salutations to the Ganges", "River Devotion"],
+    options: [
+      "Clean Waters",
+      "Ganges Blessings",
+      "Salutations to the Ganges",
+      "River Devotion",
+    ],
     answer: "Salutations to the Ganges",
   },
   {
-    question: "Which government department is responsible for the implementation of the Namami Gange program?",
+    question:
+      "Which government department is responsible for the implementation of the Namami Gange program?",
     options: [
       "Ministry of Health",
       "Ministry of Environment, Forest and Climate Change",
       "Ministry of Water Resources, River Development, and Ganga Rejuvenation",
       "Ministry of Transportation",
     ],
-    answer: "Ministry of Water Resources, River Development, and Ganga Rejuvenation",
+    answer:
+      "Ministry of Water Resources, River Development, and Ganga Rejuvenation",
   },
   {
     question: "What is the main cause of pollution in the Ganges River?",
-    options: ["Industrial waste", "Agricultural runoff", "Religious rituals", "All of the above"],
+    options: [
+      "Industrial waste",
+      "Agricultural runoff",
+      "Religious rituals",
+      "All of the above",
+    ],
     answer: "All of the above",
   },
   {
@@ -71,17 +85,20 @@ const quizData: QuizData[] = [
     answer: "Uttarakhand",
   },
   {
-    question: "What is the role of the National Mission for Clean Ganga (NMCG) in the Namami Gange initiative?",
+    question:
+      "What is the role of the National Mission for Clean Ganga (NMCG) in the Namami Gange initiative?",
     options: [
       "Promoting tourism along the Ganges",
       "Implementing projects for the cleaning and conservation of the Ganges",
       "Regulating fishing activities in the river",
       "Constructing new bridges across the Ganges",
     ],
-    answer: "Implementing projects for the cleaning and conservation of the Ganges",
+    answer:
+      "Implementing projects for the cleaning and conservation of the Ganges",
   },
   {
-    question: "Which famous wildlife sanctuary is located along the banks of the Ganges River?",
+    question:
+      "Which famous wildlife sanctuary is located along the banks of the Ganges River?",
     options: [
       "Jim Corbett National Park",
       "Sundarbans National Park",
@@ -91,7 +108,8 @@ const quizData: QuizData[] = [
     answer: "Jim Corbett National Park",
   },
   {
-    question: "What is the name of the campaign launched under Namami Gange to promote public awareness and participation?",
+    question:
+      "What is the name of the campaign launched under Namami Gange to promote public awareness and participation?",
     options: [
       "Clean Ganga Champions",
       "Ganga Sankalp Abhiyan",
@@ -101,7 +119,8 @@ const quizData: QuizData[] = [
     answer: "Ganga Sankalp Abhiyan",
   },
   {
-    question: "What are some of the measures taken under the Namami Gange initiative to control industrial pollution in the Ganges?",
+    question:
+      "What are some of the measures taken under the Namami Gange initiative to control industrial pollution in the Ganges?",
     options: [
       "Setting up Effluent Treatment Plants (ETPs)",
       "Promoting eco-friendly industries",
@@ -126,12 +145,19 @@ const quizData: QuizData[] = [
     answer: "It is considered the abode of a sacred river goddess",
   },
   {
-    question: "Which historical figure is associated with the cleaning and maintenance of the Ganges River?",
-    options: ["Mahatma Gandhi", "Jawaharlal Nehru", "Swami Vivekananda", "Bal Gangadhar Tilak"],
+    question:
+      "Which historical figure is associated with the cleaning and maintenance of the Ganges River?",
+    options: [
+      "Mahatma Gandhi",
+      "Jawaharlal Nehru",
+      "Swami Vivekananda",
+      "Bal Gangadhar Tilak",
+    ],
     answer: "Mahatma Gandhi",
   },
   {
-    question: "What is the name of the action plan launched under the Namami Gange initiative to address the pollution in the Ganges?",
+    question:
+      "What is the name of the action plan launched under the Namami Gange initiative to address the pollution in the Ganges?",
     options: [
       "Clean Ganga Project",
       "Ganga Action Plan (GAP)",
@@ -143,26 +169,45 @@ const quizData: QuizData[] = [
   {
     question: "How many states does the Ganges River flow through in India?",
     options: ["4", "5", "6", "7"],
-    answer: "6 (Uttarakhand, Uttar Pradesh, Bihar, Jharkhand, West Bengal, and a small part of Delhi)",
+    answer:
+      "6 (Uttarakhand, Uttar Pradesh, Bihar, Jharkhand, West Bengal, and a small part of Delhi)",
   },
   {
-    question: "Which of the following is a traditional boat race that takes place on the Ganges River?",
-    options: ["Kumbh Mela", "Ganga Dussehra", "Ganga Sagar Mela", "Nag Nathaiya"],
+    question:
+      "Which of the following is a traditional boat race that takes place on the Ganges River?",
+    options: [
+      "Kumbh Mela",
+      "Ganga Dussehra",
+      "Ganga Sagar Mela",
+      "Nag Nathaiya",
+    ],
     answer: "Nag Nathaiya",
   },
   {
-    question: "What is the economic significance of the Ganges River for the local communities along its banks?",
+    question:
+      "What is the economic significance of the Ganges River for the local communities along its banks?",
     options: ["Fishing", "Agriculture", "Tourism", "All of the above"],
     answer: "All of the above",
   },
   {
-    question: "Which of the following is a traditional practice associated with the Ganges River where lamps are floated on the water?",
-    options: ["Ganga Aarti", "Ganges Puja", "Ganges Vandana", "Ganges Pradakshina"],
+    question:
+      "Which of the following is a traditional practice associated with the Ganges River where lamps are floated on the water?",
+    options: [
+      "Ganga Aarti",
+      "Ganges Puja",
+      "Ganges Vandana",
+      "Ganges Pradakshina",
+    ],
     answer: "Ganga Aarti",
   },
   {
-    question: "What is the importance of the Ganges River for agriculture in the region?",
-    options: ["It provides irrigation water", "It controls floods", "It serves as a barrier against pests"],
+    question:
+      "What is the importance of the Ganges River for agriculture in the region?",
+    options: [
+      "It provides irrigation water",
+      "It controls floods",
+      "It serves as a barrier against pests",
+    ],
     answer: "It provides irrigation water",
   },
 ];
@@ -194,10 +239,7 @@ interface QuizState {
 type QuizAction = { type: "ANSWER"; payload: string } | { type: "RESET" };
 
 // Define the quizReducer function
-const quizReducer = (
-  state: QuizState,
-  action: QuizAction
-): QuizState => {
+const quizReducer = (state: QuizState, action: QuizAction): QuizState => {
   switch (action.type) {
     case "ANSWER": {
       const currentQuestion = quizData[state.currentQuestionIndex];
@@ -224,13 +266,10 @@ const quizReducer = (
 
 // Define the QuizPage component
 const QuizPage: React.FC = () => {
-  const [{ currentQuestionIndex, score }, dispatch] = useReducer(
-    quizReducer,
-    {
-      currentQuestionIndex: 0,
-      score: 0,
-    }
-  );
+  const [{ currentQuestionIndex, score }, dispatch] = useReducer(quizReducer, {
+    currentQuestionIndex: 0,
+    score: 0,
+  });
 
   useEffect(() => {
     // Reset the question index and score when the component mounts
@@ -238,12 +277,16 @@ const QuizPage: React.FC = () => {
   }, []);
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen min-w-screen bg-gradient-to-b from-blue-900 to-blue-500 text-white">
+    <main className="flex flex-col items-center justify-center min-h-screen min-w-screen bg-gradient-to-b from-[#FFFFFF] to-[#39B5E9] text-black">
       {/* Navbar */}
       <nav className="flex justify-between p-4 w-full bg-transparent">
-        <div className="text-xl font-bold">Chacha Chaudhary's SARV GANGE VANI</div>
+        <div className="text-xl font-bold">
+          Chacha Chaudhary's SARV GANGE VANI
+        </div>
         <div>
-          <span className="mr-4">{`Question ${currentQuestionIndex + 1} / ${quizData.length}`}</span>
+          <span className="mr-4">{`Question ${currentQuestionIndex + 1} / ${
+            quizData.length
+          }`}</span>
           <button onClick={() => dispatch({ type: "RESET" })}>Reset</button>
         </div>
       </nav>
@@ -253,7 +296,9 @@ const QuizPage: React.FC = () => {
         {/* Render current question */}
         {currentQuestionIndex < quizData.length && (
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">{`${currentQuestionIndex + 1}. ${quizData[currentQuestionIndex].question}`}</h2>
+            <h2 className="text-2xl font-bold mb-4">{`${
+              currentQuestionIndex + 1
+            }. ${quizData[currentQuestionIndex].question}`}</h2>
             <ul>
               {renderOptions(
                 quizData[currentQuestionIndex].options,
@@ -267,9 +312,7 @@ const QuizPage: React.FC = () => {
         {/* Render score after quiz completion */}
         {currentQuestionIndex === quizData.length && (
           <div className="text-center">
-            <h2 className="text-2xl font-bold mb-4">
-              Quiz Completed!
-            </h2>
+            <h2 className="text-2xl font-bold mb-4">Quiz Completed!</h2>
             <p className="text-lg">Your Score: {score}</p>
           </div>
         )}
