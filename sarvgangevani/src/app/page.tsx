@@ -28,9 +28,9 @@ export default function Home() {
           </a>
         </div>
         <div className="z-10 mt-12">
-          <a href="">
+          <a href="/chat">
             <button className="bg-white text-blue-700 px-6 py-3 rounded-full text-lg font-semibold shadow-lg">
-              Click to start!
+              Chachaji se Baatien Kare!
             </button>
           </a>
         </div>
@@ -40,6 +40,7 @@ export default function Home() {
             alt="Illustration of Chachaji in traditional attire dancing"
             width={400}
             height={400}
+            className="bottom-[16vh] absolute "
           />
         </div>{" "}
         <Image
@@ -75,7 +76,7 @@ export default function Home() {
           alt=""
           width={800}
           height={700}
-          className="absolute bottom-[-50vh] left-[-10vw] mix-blend-multiply z-10 scale-75"
+          className="absolute bottom-[-55vh] left-[-10vw] mix-blend-multiply z-10 scale-[0.90]"
         />
         <div className="absolute bottom-0 right-0 w-1/3">
           <Image
