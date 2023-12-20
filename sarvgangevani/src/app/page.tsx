@@ -4,6 +4,7 @@ import Boat from "./components/boat.png";
 import Waves1 from "./components/Vector.png";
 import Waves2 from "./components/image 8.jpg";
 import Shore from "./components/Ellipse 2.jpg";
+
 export default function Home() {
   return (
     <main className="min-h-screen items-center justify-between min-w-full bg-gradient-to-b from-[#FFFFFF] to-[#39B5E9] absolute">
@@ -14,20 +15,32 @@ export default function Home() {
           </h1>
         </div>
         <div className="z-10 flex space-x-4 absolute top-0 px-4 py-6 right-0">
-          <a href="/games" className="text-black text-lg">
+          <a
+            href="/games"
+            className="text-black text-lg relative underline-hover"
+          >
             Games
           </a>
-          <a href="/quiz" className="text-black text-lg">
+          <a
+            href="/quiz"
+            className="text-black text-lg relative underline-hover"
+          >
             Quiz
           </a>
-          <a href="/news" className="text-black text-lg">
+          <a
+            href="/news"
+            className="text-black text-lg relative underline-hover"
+          >
             News
           </a>
-          <a href="/about" className="text-black text-lg">
+          <a
+            href="/about"
+            className="text-black text-lg relative underline-hover"
+          >
             About Us
           </a>
         </div>
-        <div className="z-10 mt-12 flex flex-col justify-center items-center  ">
+        <div className="z-10 mt-12 flex flex-col justify-center items-center">
           <p className="font-mono text-4xl py-6">Chachaji se Baatein kare!</p>
           <a href="/chat">
             <button className="bg-white text-blue-700 px-6 py-3 rounded-full text-lg font-semibold shadow-lg">
@@ -43,7 +56,7 @@ export default function Home() {
             height={400}
             className="bottom-[16vh] absolute "
           />
-        </div>{" "}
+        </div>
         <Image
           src={Waves1}
           alt=""
@@ -83,8 +96,8 @@ export default function Home() {
           <Image
             src={Boat}
             alt="Illustration of children in a boat with balloons and a flag"
-            width={500}
-            height={500}
+            width={800}
+            height={800}
           />
         </div>
       </div>
