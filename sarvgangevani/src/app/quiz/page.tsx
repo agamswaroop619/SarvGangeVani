@@ -1,7 +1,15 @@
-import React from "react";
-import Image from "next/image";
+"use client"
+import React, { useReducer, useEffect } from "react";
 
-const quizData = [
+// Define the QuizData interface
+interface QuizData {
+  question: string;
+  options: string[];
+  answer: string;
+}
+
+// Define the array of quiz data
+const quizData: QuizData[] = [
   {
     question: "What is the primary river that the Namami Gange initiative aims to clean?",
     options: ["Yamuna", "Ganges", "Brahmaputra", "Godavari"],
@@ -158,28 +166,113 @@ const quizData = [
     answer: "It provides irrigation water",
   },
 ];
-
-const renderOptions = (options: string[]) => {
+// Define the renderOptions function with checkboxes
+const renderOptions = (
+  options: string[],
+  dispatch: (selectedOption: string) => void
+) => {
   return options.map((option, index) => (
-    <li key={index} className="text-lg">
-      {option}
+    <li key={index} className="text-lg text-left">
+      <label>
+        <input
+          type="checkbox"
+          value={option}
+          onChange={() => dispatch(option)}
+        />
+        {option}
+      </label>
     </li>
   ));
 };
 
-// Main component for the quiz page
+// Define the QuizState and QuizAction types
+interface QuizState {
+  currentQuestionIndex: number;
+  score: number;
+}
+
+type QuizAction = { type: "ANSWER"; payload: string } | { type: "RESET" };
+
+// Define the quizReducer function
+const quizReducer = (
+  state: QuizState,
+  action: QuizAction
+): QuizState => {
+  switch (action.type) {
+    case "ANSWER": {
+      const currentQuestion = quizData[state.currentQuestionIndex];
+
+      if (action.payload === currentQuestion.answer) {
+        // Correct answer, increase the score
+        return { ...state, score: state.score + 1 };
+      }
+
+      // Move to the next question
+      return {
+        ...state,
+        currentQuestionIndex: state.currentQuestionIndex + 1,
+      };
+    }
+    case "RESET": {
+      // Reset the state to initial values
+      return { currentQuestionIndex: 0, score: 0 };
+    }
+    default:
+      return state;
+  }
+};
+
+// Define the QuizPage component
 const QuizPage: React.FC = () => {
+  const [{ currentQuestionIndex, score }, dispatch] = useReducer(
+    quizReducer,
+    {
+      currentQuestionIndex: 0,
+      score: 0,
+    }
+  );
+
+  useEffect(() => {
+    // Reset the question index and score when the component mounts
+    dispatch({ type: "RESET" });
+  }, []);
+
   return (
-    <main className="flex min-h-[100vh] flex-col items-center justify-between min-w-[100vw] bg-[#B6D3FE]">
+    <main className="flex flex-col items-center justify-center min-h-screen min-w-screen bg-gradient-to-b from-blue-900 to-blue-500 text-white">
+      {/* Navbar */}
+      <nav className="flex justify-between p-4 w-full bg-transparent">
+        <div className="text-xl font-bold">Chacha Chaudhary's SARV GANGE VANI</div>
+        <div>
+          <span className="mr-4">{`Question ${currentQuestionIndex + 1} / ${quizData.length}`}</span>
+          <button onClick={() => dispatch({ type: "RESET" })}>Reset</button>
+        </div>
+      </nav>
+
       {/* Quiz Container */}
-      <div className="flex flex-col items-center p-8 bg-white rounded-md shadow-md mt-8">
-        {/* Render questions */}
-        {quizData.map((quiz, index) => (
-          <div key={index} className="mb-8">
-            <h2 className="text-2xl text-black font-bold mb-4">{`${index + 1}. ${quiz.question}`}</h2>
-            <ul className="text-black">{renderOptions(quiz.options)}</ul>
+      <div className="flex flex-col items-center p-8 bg-white rounded-md shadow-md mt-8 bg-opacity-75">
+        {/* Render current question */}
+        {currentQuestionIndex < quizData.length && (
+          <div className="mb-8 text-center">
+            <h2 className="text-2xl font-bold mb-4">{`${currentQuestionIndex + 1}. ${quizData[currentQuestionIndex].question}`}</h2>
+            <ul>
+              {renderOptions(
+                quizData[currentQuestionIndex].options,
+                (selectedOption) =>
+                  dispatch({ type: "ANSWER", payload: selectedOption })
+              )}
+            </ul>
           </div>
-        ))}
+        )}
+
+        {/* Render score after quiz completion */}
+        {currentQuestionIndex === quizData.length && (
+          <div className="text-center">
+            <h2 className="text-2xl font-bold mb-4">
+              Quiz Completed!
+            </h2>
+            <p className="text-lg">Your Score: {score}</p>
+          </div>
+        )}
       </div>
     </main>
   );
