@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface MessagesProps {
   messages: { text: string; fromUser: boolean }[];
 }
 
 const Messages: React.FC<MessagesProps> = ({ messages }) => {
+  const [currentQuestion, setCurrentQuestion] = useState<string>("");
+
   const speak = (text: string) => {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "hi-IN";
@@ -13,15 +15,33 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
     window.speechSynthesis.speak(utterance);
   };
 
+  const handleButtonClick = (text: string) => {
+    setCurrentQuestion(text);
+  };
+
   if (messages.length === 0) {
     return (
       <div className="absolute px-4 scroll-overflow inset-x-0 bottom-[10vh]">
         <h1 className="text-3xl">Frequently Asked Questions</h1>
         <div className="grid grid-cols-2 gap-2">
-          <button className="border-double border-4 rounded-full border-white">
+          <button
+            className="border-double border-4 rounded-full border-white"
+            id="sample1"
+            onClick={() =>
+              handleButtonClick(
+                "What is Namami Gange? How can we contribute to it?"
+              )
+            }
+          >
             What is Namami Gange? How can we contribute to it?
           </button>
-          <button className="border-double border-4 rounded-full border-white">
+          <button
+            className="border-double border-4 rounded-full border-white"
+            id="sample2"
+            onClick={() =>
+              handleButtonClick("Chachaji gaana maa ki koi kahani sunaiye naa!")
+            }
+          >
             Chachaji gaana maa ki koi kahani sunaiye naa!
           </button>
         </div>
@@ -35,7 +55,7 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
             className={`${
               message.fromUser ? "chat chat-end" : "chat chat-start"
             } animate-fadeInScale`}
-            key={message.text} // Use a unique key, assuming message.text is unique
+            key={message.text}
           >
             <div className="chat-image avatar">
               <div className="w-16 h-16 rounded-full">
@@ -52,7 +72,15 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
             </div>
             <div className="chat-footer">
               {message.fromUser ? "You" : "Chachaji"}
-              <button id="voice" onClick={() => speak(message.text)}>
+              <button
+                id="voice"
+                onClick={() => {
+                  speak(message.text);
+                  if (message.fromUser) {
+                    handleButtonClick(message.text);
+                  }
+                }}
+              >
                 🔊
               </button>
             </div>
