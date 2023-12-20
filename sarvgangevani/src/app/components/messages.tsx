@@ -10,8 +10,8 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
   const speak = (text: string) => {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "hi-IN";
-    utterance.pitch = 0.5; // Increase pitch
-    utterance.rate = 0.8; // Slow down speech
+    utterance.pitch = 0.5;
+    utterance.rate = 0.8;
     window.speechSynthesis.speak(utterance);
   };
 
