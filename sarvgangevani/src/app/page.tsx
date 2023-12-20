@@ -4,6 +4,7 @@ import Boat from "./components/boat.png";
 import Waves1 from "./components/Vector.png";
 import Waves2 from "./components/image 8.jpg";
 import Shore from "./components/Ellipse 2.jpg";
+import Logo from "./components/SARV GANGE VANI.jpg";
 
 export default function Home() {
   return (
@@ -40,8 +41,15 @@ export default function Home() {
             About Us
           </a>
         </div>
-        <div className="z-10 mt-12 flex flex-col justify-center items-center">
-          <p className="font-mono text-4xl py-6">Chachaji se Baatein kare!</p>
+        <img
+          src="https://nmcg.nic.in/logo/GIF.gif"
+          alt=""
+          className="z-0 opacity-50 mix-blend-multiply"
+        />
+        <div className="z-10 absolute flex flex-col justify-center items-center">
+          <p className="font-mono text-3xl py-2 font-bold text-white">
+            Chachaji se Baatein kare!
+          </p>
           <a href="/chat">
             <button className="bg-white text-blue-700 px-6 py-3 rounded-full text-lg font-semibold shadow-lg">
               Chat Now <span>→</span>
@@ -54,7 +62,7 @@ export default function Home() {
             alt="Illustration of Chachaji in traditional attire dancing"
             width={400}
             height={400}
-            className="bottom-[16vh] absolute "
+            className="bottom-[6vh] absolute "
           />
         </div>
         <Image
@@ -62,35 +70,42 @@ export default function Home() {
           alt=""
           width={800}
           height={700}
-          className="absolute bottom-0 right-0"
+          className="absolute bottom-0 right-0 animate-moveRightToLeft"
         />
         <Image
           src={Waves1}
           alt=""
           width={800}
           height={700}
-          className="absolute bottom-0 right-[20vw] "
+          className="absolute bottom-0 right-[20vw] animate-moveRightToLeft"
+        />
+        <Image
+          src={Waves2}
+          alt=""
+          width={800}
+          height={800}
+          className="absolute bottom-0 right-[10vw] mix-blend-multiply z-10 animate-moveRightToLeft"
         />
         <Image
           src={Waves2}
           alt=""
           width={800}
           height={700}
-          className="absolute bottom-0 right-[10vw] mix-blend-multiply z-10"
+          className="absolute bottom-0 right-[-10vw] mix-blend-multiply z-10 animate-moveLeftToRight"
         />
         <Image
           src={Waves2}
           alt=""
           width={800}
           height={700}
-          className="absolute bottom-0 right-[-10vw] mix-blend-multiply z-10"
+          className="absolute bottom-0 right-[23vw] mix-blend-multiply z-10 animate-moveLeftToRight"
         />
         <Image
           src={Shore}
           alt=""
           width={800}
           height={700}
-          className="absolute bottom-[-55vh] left-[-10vw] mix-blend-multiply z-10 scale-[0.90]"
+          className="absolute bottom-[-65vh] left-[-10vw] mix-blend-multiply z-10 scale-[0.90]"
         />
         <div className="absolute bottom-0 right-0 w-1/3">
           <Image
