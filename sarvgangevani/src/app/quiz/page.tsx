@@ -211,17 +211,20 @@ const quizData: QuizData[] = [
     answer: "It provides irrigation water",
   },
 ];
-// Define the renderOptions function with checkboxes
+
+// Define the renderOptions function with radio buttons
 const renderOptions = (
   options: string[],
-  dispatch: (selectedOption: string) => void
+  dispatch: (selectedOption: string) => void,
+  selectedOption: string | null
 ) => {
   return options.map((option, index) => (
     <li key={index} className="text-lg text-left">
       <label>
         <input
-          type="checkbox"
+          type="radio"
           value={option}
+          checked={selectedOption === option}
           onChange={() => dispatch(option)}
         />
         {option}
@@ -234,9 +237,13 @@ const renderOptions = (
 interface QuizState {
   currentQuestionIndex: number;
   score: number;
+  selectedOption: string | null;
 }
 
-type QuizAction = { type: "ANSWER"; payload: string } | { type: "RESET" };
+type QuizAction =
+  | { type: "ANSWER"; payload: string }
+  | { type: "RESET" }
+  | { type: "SELECT_OPTION"; payload: string };
 
 // Define the quizReducer function
 const quizReducer = (state: QuizState, action: QuizAction): QuizState => {
@@ -253,11 +260,16 @@ const quizReducer = (state: QuizState, action: QuizAction): QuizState => {
       return {
         ...state,
         currentQuestionIndex: state.currentQuestionIndex + 1,
+        selectedOption: null, // Reset selected option when moving to the next question
       };
     }
     case "RESET": {
       // Reset the state to initial values
-      return { currentQuestionIndex: 0, score: 0 };
+      return { currentQuestionIndex: 0, score: 0, selectedOption: null };
+    }
+    case "SELECT_OPTION": {
+      // Update the selected option
+      return { ...state, selectedOption: action.payload };
     }
     default:
       return state;
@@ -266,10 +278,12 @@ const quizReducer = (state: QuizState, action: QuizAction): QuizState => {
 
 // Define the QuizPage component
 const QuizPage: React.FC = () => {
-  const [{ currentQuestionIndex, score }, dispatch] = useReducer(quizReducer, {
-    currentQuestionIndex: 0,
-    score: 0,
-  });
+  const [{ currentQuestionIndex, score, selectedOption }, dispatch] =
+    useReducer(quizReducer, {
+      currentQuestionIndex: 0,
+      score: 0,
+      selectedOption: null,
+    });
 
   useEffect(() => {
     // Reset the question index and score when the component mounts
@@ -303,7 +317,8 @@ const QuizPage: React.FC = () => {
               {renderOptions(
                 quizData[currentQuestionIndex].options,
                 (selectedOption) =>
-                  dispatch({ type: "ANSWER", payload: selectedOption })
+                  dispatch({ type: "ANSWER", payload: selectedOption }),
+                selectedOption
               )}
             </ul>
           </div>
@@ -322,3 +337,5 @@ const QuizPage: React.FC = () => {
 };
 
 export default QuizPage;
+
+// Define the array of quiz data
