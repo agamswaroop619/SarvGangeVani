@@ -49,7 +49,7 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
     );
   } else {
     return (
-      <div className="relative scroll-overflow top-[10vh] bottom-[10vh]">
+      <div className="relative scroll-overflow top-[5vh] bottom-[10vh]">
         {messages.map((message, index) => (
           <div
             className={`${
