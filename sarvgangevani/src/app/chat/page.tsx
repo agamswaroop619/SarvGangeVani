@@ -57,7 +57,7 @@ export default function Home() {
   }, [currentQuestion]);
 
   return (
-    <main className="flex min-h-[100vh] flex-col items-center justify-between min-w-[100vw] bg-gradient-to-b from-[#FFFFFF] to-[#39B5E9] absolute">
+    <main className="flex min-h-[100vh] flex-col items-center justify-between min-w-[100vw] bg-gradient-to-b from-[#FFFFFF] to-[#39B5E9] scroll-overflow absolute">
       <Messages messages={receivedMessages} />
       <Textinput setQuestion={setCurrentQuestion} onAskQuestion={() => {}} />
     </main>

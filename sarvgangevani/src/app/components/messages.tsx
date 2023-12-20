@@ -21,7 +21,12 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
 
   if (messages.length === 0) {
     return (
-      <div className="absolute px-4 scroll-overflow inset-x-0 bottom-[7vh]">
+      <div className="absolute px-4 scroll-overflow bottom-[7vh]">
+        <img
+          src="https://nmcg.nic.in/logo/GIF.gif"
+          alt=""
+          className="z-0 opacity-50 mix-blend-multiply"
+        />
         <h1 className="text-3xl">Frequently Asked Questions</h1>
         <div className="grid grid-cols-2 gap-2">
           <button
@@ -49,7 +54,7 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
     );
   } else {
     return (
-      <div className="relative scroll-overflow top-[5vh] bottom-[10vh]">
+      <div className="absolute scroll-overflow top-[5vh] bottom-[10vh]">
         {messages.map((message, index) => (
           <div
             className={`${
